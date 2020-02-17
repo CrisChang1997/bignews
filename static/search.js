@@ -13,7 +13,7 @@ $.ajax({
 
         // location.href = '/list.html?key=' + keys;
         var html = template('postsTpl', { response: response.data.data });
-        // console.log(html);
+        console.log(html);
         $('#postsBox').html(html);
     }
 })
