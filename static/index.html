@@ -167,7 +167,7 @@
     <div class="common_news_list">
       <a href="article.html?id={{$value.id}}" class="list_pic"><img src="{{$value.cover}}" alt=""></a>
       <h4><a href="article.html?id={{$value.id}}">{{$value.title}}</a></h4>
-      <p class="posts_p"> {{$value.intro}}</p>
+      <p class="posts_p"> {{$value.content.replace(/<[^>]+>/g,'')}}</p> 
       <div class="new_info">
         <span>标签：{{$value.category}}&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<i class="fa fa-eye"></i>&nbsp;阅读( 
          {{$value.read}} )&nbsp;&nbsp;&nbsp;<i class="fa fa-commenting"></i>&nbsp;评论( {{$value.comments}} )</span>
@@ -186,19 +186,17 @@
       success: function (response) {
         console.log(response);
         console.log(response.data);
-
         // location.href = '/list.html?key=' + keys;
         var html = template('postsTpl', { response: response.data.data });
         // console.log(html);
         $('#postsBox').html(html);
-        // $('.posts_p').html(response.data.data.content)
       }
     })
   </script>
   <!-- index 代码 -->
   <script>
-
     
+
   </script>
 
   <script src="recommend.js"></script>
