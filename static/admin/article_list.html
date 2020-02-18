@@ -99,9 +99,22 @@
 
     <!-- 业务逻辑代码 -->
     <script>
+        function getUrlParams(name) {
+            var params = location.search.substr(1).split('&');
+            for (var i = 0; i < params.length; i++) {
+                if (params[i].split('=')[0] == name) {
+                    return params[i].split('=')[1];
+                }
+            }
+            return -1;
+        }
+
+
         //保留筛选条件
         var categoryId;
         var state;
+        var key = decodeURI(getUrlParams('key')) == -1 ? '' : decodeURI(getUrlParams('key'));
+
 
         //获取分类信息
         $.ajax({
@@ -120,6 +133,9 @@
         $.ajax({
             type: 'get',
             url: 'http://localhost:8080/api/v1/admin/article/query',
+            data: {
+                key: key
+            },
             success: function(res) {
                 var result = res.data;
                 var data = result.data;
@@ -128,7 +144,7 @@
                 });
                 $('#articleBox').html(html);
                 $('#pageBox').twbsPagination({
-                    totalPages: result.pages,
+                    totalPages: result.pages == 0 ? 1 : result.pages,
                     visiblePages: 5,
                     first: '首页',
                     last: '末页',
@@ -147,6 +163,7 @@
                 type: 'get',
                 url: 'http://localhost:8080/api/v1/admin/article/query',
                 data: {
+                    key: key,
                     type: categoryId,
                     state: state,
                     page: page
@@ -167,6 +184,7 @@
             var formData = $(this).serialize();
             categoryId = $('#selCategory').val();
             state = $('#selStatus').val();
+            formData += `&key=${key}`;
             $.ajax({
                 type: 'get',
                 url: 'http://localhost:8080/api/v1/admin/article/query',
@@ -182,8 +200,9 @@
                     $('#pageBox').removeData("twbs-pagination");
                     //重新设置分页
                     $('#pageBox').twbsPagination({
-                        totalPages: result.pages,
+                        totalPages: result.pages == 0 ? 1 : result.pages,
                         visiblePages: 5,
+                        startPage: 1,
                         first: '首页',
                         last: '末页',
                         prev: '上一页',
