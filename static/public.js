@@ -29,13 +29,13 @@ $.ajax({
         var rankTpl = `
         {{each response}}
         {{if $index==0}}
-        <li><span class="first">1</span><a href="#">{{$value.title}}</a></li>
+        <li><span class="first">1</span><a href="article.html?id={{$value.id}}">{{$value.title}}</a></li>
         {{else if $index==1}}
-        <li><span class="second">2</span><a href="#">{{$value.title}}</a></li>
+        <li><span class="second">2</span><a href="article.html?id={{$value.id}}">{{$value.title}}</a></li>
         {{else if $index==2}}
-        <li><span class="third">3</span><a href="#">{{$value.title}}</a></li>
+        <li><span class="third">3</span><a href="article.html?id={{$value.id}}">{{$value.title}}</a></li>
         {{else}}
-        <li><span>{{$index-0+1}}</span><a href="#">{{$value.title}}</a></li>
+        <li><span>{{$index-0+1}}</span><a href="article.html?id={{$value.id}}">{{$value.title}}</a></li>
         {{/if}}
         {{/each}}
         `
