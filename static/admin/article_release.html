@@ -58,7 +58,7 @@
                 <div class="form-group">
                     <label for="inputEmail3" class="col-sm-2 control-label">文章内容：</label>
                     <div class="col-sm-10">
-                        <textarea class="form-control" id="rich_content" placeholder="文章内容" name="content">
+                        <textarea class="form-control" id="rich_content" placeholder="文章内容">
 
                             </textarea>
                     </div>
@@ -114,14 +114,14 @@
 
         //提交表单
         $('#addForm').on('submit', function() {
+            var text = tinymce.activeEditor.getContent();
             var formData = new FormData(this);
             if (flag == 1) {
                 formData.append('state', '已发布');
             } else {
                 formData.append('state', '草稿');
             }
-            console.log(flag);
-
+            formData.append('content', text);
             $.ajax({
                 type: 'post',
                 url: 'http://localhost:8080/api/v1/admin/article/publish',
@@ -129,8 +129,8 @@
                 processData: false,
                 contentType: false,
                 success: function(res) {
-                    console.log(res);
-
+                    alert('提交成功');
+                    location.href = 'article_list.html';
                 }
             })
             return false;
