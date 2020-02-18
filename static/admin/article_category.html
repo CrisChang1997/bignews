@@ -35,7 +35,7 @@
         <thead>
           <tr>
             <th>名称</th>
-            <th>Slug</th>
+            <th>别名</th>
             <th class="text-center" width="100">操作</th>
           </tr>
         </thead>
@@ -112,19 +112,24 @@
       var nameVal = $('#recipient-name').val();
       var slugVal = $('#recipient-slug').val();
       //发送请求
-      $.ajax({
-        type: 'post',
-        url: 'http://localhost:8080/api/v1/admin/category/add',
-        data: {
-          name: nameVal,
-          slug: slugVal
-        },
-        success: function (re) {
-          // console.log(re);
-          location.reload();
+      if (nameVal.trim().length != 0 && slugVal.trim().length != 0) {
+        $.ajax({
+          type: 'post',
+          url: 'http://localhost:8080/api/v1/admin/category/add',
+          data: {
+            name: nameVal,
+            slug: slugVal
+          },
+          success: function (re) {
+            // console.log(re);
+            location.reload();
 
-        }
-      })
+          }
+        })
+      } else {
+        alert('内容不能为空')
+      }
+
 
     });
 
