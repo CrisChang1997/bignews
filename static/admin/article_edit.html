@@ -65,8 +65,8 @@
                 </div>
                 <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
-                        <button type="submit" class="btn btn-info btn-edit">修改</button>
-                        <button type="submit" class="btn btn-success btn-edit">修改</button>
+                        <button type="submit" class="btn btn-success btn-edit" onclick="flag=1">修改并发布</button>
+                        <button type="submit" class="btn btn-info btn-edit" onclick="flag=0">存为草稿</button>
                     </div>
                 </div>
             </form>
@@ -97,6 +97,8 @@
         }
         //获取文章id及文章状态
         var id = getUrlParams('id');
+        //判断是否更改文章状态
+        var flag = 0;
         //中文转码
         var state = decodeURI(getUrlParams('state'));
         //获取分类
@@ -149,7 +151,12 @@
         $('#editForm').on('submit', function() {
             var formData = new FormData(this);
             formData.append('id', id);
-            formData.append('state', state);
+            if (flag == 1) {
+                formData.append('state', '已发布');
+            } else {
+                formData.append('state', '草稿');
+            }
+
             $.ajax({
                 type: 'post',
                 url: 'http://localhost:8080/api/v1/admin/article/edit',
