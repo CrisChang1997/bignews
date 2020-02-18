@@ -29,7 +29,7 @@
                 <div class="form-group">
                     <label for="inputPassword3" class="col-sm-2 control-label">文章封面：</label>
                     <div class="col-sm-10">
-                        <img src="./images/2.jpg" style="height:120px;" alt="" id="coverImg">
+                        <img src="" style="height:120px;" alt="" id="coverImg">
                         <input type="file" name="cover" id="exampleInputFile">
                     </div>
                 </div>
@@ -114,6 +114,8 @@
 
         //提交表单
         $('#addForm').on('submit', function() {
+
+
             var text = tinymce.activeEditor.getContent();
             var formData = new FormData(this);
             if (flag == 1) {
@@ -122,17 +124,23 @@
                 formData.append('state', '草稿');
             }
             formData.append('content', text);
-            $.ajax({
-                type: 'post',
-                url: 'http://localhost:8080/api/v1/admin/article/publish',
-                data: formData,
-                processData: false,
-                contentType: false,
-                success: function(res) {
-                    alert('提交成功');
-                    location.href = 'article_list.html';
-                }
-            })
+            if (formData.get('cover').name) {
+                $.ajax({
+                    type: 'post',
+                    url: 'http://localhost:8080/api/v1/admin/article/publish',
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function(res) {
+                        alert('提交成功');
+                        location.href = 'article_list.html';
+                    }
+                })
+            } else {
+                alert('请上传图片');
+            }
+
+
             return false;
         })
     </script>
