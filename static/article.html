@@ -55,14 +55,14 @@
 
   <div class="main_con clearfix">
     <div class="left_con setfr">
-    <div id="articleBox">
+      <div id="articleBox">
 
-    </div>
+      </div>
 
-      <form action="" class="comment_form">
+      <form action="" class="comment_form" id="comment">
         <div class="form_group">
           <label>用户名：</label>
-          <input type="text" placeholder="请输入用户名" class="comment_name">
+          <input type="text" placeholder="请输入用户名" class="comment_name" id="test">
         </div>
         <div class="form_group">
           <label>评论内容：</label>
@@ -76,36 +76,6 @@
         4条评论
       </div>
 
-      <div class="comment_list_con">
-        <div class="comment_detail_list">
-          <div class="person_pic fl">乔</div>
-          <div class="name_time fl"><b>虚竹</b><span>4小时前</span></div>
-          <div class="comment_text fl">
-            遏制茅台酒价格过快上涨，多渠道供给，就不一定要买，租茅台酒也可以的，租售同权。开发共有产权茅台酒，让老百姓喝得起茅台酒，饮者有其酒。
-          </div>
-        </div>
-        <div class="comment_detail_list">
-          <div class="person_pic fl">段</div>
-          <div class="name_time fl"><b>虚竹</b><span>4小时前</span></div>
-          <div class="comment_text fl">
-            遏制茅台酒价格过快上涨，多渠道供给，就不一定要买，租茅台酒也可以的，租售同权。开发共有产权茅台酒，让老百姓喝得起茅台酒，饮者有其酒。
-          </div>
-        </div>
-        <div class="comment_detail_list">
-          <div class="person_pic fl">虚</div>
-          <div class="name_time fl"><b>虚竹</b><span>4小时前</span></div>
-          <div class="comment_text fl">
-            遏制茅台酒价格过快上涨，多渠道供给，就不一定要买，租茅台酒也可以的，租售同权。开发共有产权茅台酒，让老百姓喝得起茅台酒，饮者有其酒。
-          </div>
-        </div>
-        <div class="comment_detail_list">
-          <div class="person_pic fl">王</div>
-          <div class="name_time fl"><b>虚竹</b><span>4小时前</span></div>
-          <div class="comment_text fl">
-            遏制茅台酒价格过快上涨，多渠道供给，就不一定要买，租茅台酒也可以的，租售同权。开发共有产权茅台酒，让老百姓喝得起茅台酒，饮者有其酒。
-          </div>
-        </div>
-      </div>
     </div>
     <div class="right_con setfl">
       <div class="common_wrap">
@@ -189,6 +159,7 @@
   <script src="./js/template-web.js"></script>
   <script src="public.js"></script>
   <script src="./article.js"></script>
+  <script src="comment.js"></script>
   <!-- 文章页面的 js 代码  -->
   <script type="text/html" id="articleTpl">
     <div class="breadcrumb">
@@ -216,6 +187,62 @@
       下一篇： <a href="#">世界第一个可以玩游戏的马桶、世界上第一个可以玩游戏的茶杯</a>
     </div>
   </script>
+  <script type="text/html" id="commentTpl">
+    {{each data}}
+    <div class="comment_list_con">
+      <div class="comment_detail_list">
+        <div class="person_pic fl">乔</div>
+        <div class="name_time fl"><b>{{$value.author}}</b><span>{{$value.date}}</span></div>
+        <div class="comment_text fl">
+         {{$value.content}}
+        </div>
+      </div>
+      {{/each}}
+  </script>
+  <script>
+    // 获取文章的ID
+    var postId = getUrlParams('id');
+    $('#comment').on('submit', function () {
+      var content = $('.comment_input').val();
+      var name = $('#test').val();
+      // 阻止表单默认提交行为
+
+      $.ajax({
+        type: 'post',
+        url: 'http://localhost:8080/api/v1/index/post_comment',
+        data: {
+          author: name,
+          content: content,
+          articleId: postId
+        },
+        success: function () {
+          alert('评论成功')
+          location.reload();
+        },
+        error: function () {
+          alert('评论失败')
+        }
+
+      })
+      return false;
+    });
+
+    // 向服务端发送请求 获取评论列表数据
+    $.ajax({
+      tyoe: 'get',
+      url: 'http://localhost:8080/api/v1/index/get_comment',
+      data: {
+        articleId: postId
+      },
+      success: function (response) {
+        console.log(response);
+        var html = template('commentTpl', response)
+        console.log(html);
+        $('.comment_count').html(html);
+      }
+    })
+  </script>
 </body>
+
 
 </html>

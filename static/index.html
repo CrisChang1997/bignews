@@ -98,7 +98,7 @@
           <li><span>4</span><a href="#">神奇的水滴摄影，泡泡中的世界</a></li>
           <li><span>5</span><a href="#">神奇的水滴摄影，泡泡中的世界</a></li>
           <li><span>6</span><a href="#">神奇的水滴摄影，泡泡中的世界</a></li> -->
-         
+
         </ul>
       </div>
       <div class="common_wrap">
@@ -138,14 +138,8 @@
       </div>
       <div class="common_wrap">
         <h3><i class="fa fa-bullseye"></i> 焦点关注</h3>
-        <ul class="content_list guanzhu_list">
-          <li><a href="#">神奇的水滴摄影，泡泡中的世界泡泡中的世界</a></li>
-          <li><a href="#">神奇的水滴摄影，泡泡中的世界</a></li>
-          <li><a href="#">神奇的水滴摄影，泡泡中的世界</a></li>
-          <li><a href="#">神奇的水滴摄影，泡泡中的世界</a></li>
-          <li><a href="#">神奇的水滴摄影，泡泡中的世界</a></li>
-          <li><a href="#">神奇的水滴摄影，泡泡中的世界</a></li>
-          <li><a href="#">神奇的水滴摄影，泡泡中的世界</a></li>
+        <ul class="content_list guanzhu_list" id="recommendBox">
+
         </ul>
       </div>
     </div>
@@ -184,12 +178,12 @@
   </script>
   <script>
     $.ajax({
-    type: 'get',
-    url: 'http://localhost:8080/api/v1/index/search',
-    // data: {
-    //     key:keys
-    // },
-    success: function (response) {
+      type: 'get',
+      url: 'http://localhost:8080/api/v1/index/search',
+      // data: {
+      //     key:keys
+      // },
+      success: function (response) {
         console.log(response);
         console.log(response.data);
 
@@ -197,12 +191,14 @@
         var html = template('postsTpl', { response: response.data.data });
         // console.log(html);
         $('#postsBox').html(html);
-    }
-})
+      }
+    })
   </script>
   <!-- index 代码 -->
   <script>
   </script>
+
+  <script src="recommend.js"></script>
 </body>
 
 </html>
