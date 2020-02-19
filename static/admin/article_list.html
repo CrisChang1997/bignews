@@ -156,6 +156,11 @@
                     data: data
                 });
                 $('#articleBox').html(html);
+                if (data.length == 0) {
+                    $('#myModal').modal('show');
+                    $('.modal-body').text('没有符合条件的数据');
+                    return;
+                }
                 initPage(result.pages);
             }
         })
@@ -164,6 +169,7 @@
 
         //文章筛选
         $('#searchForm').on('submit', function() {
+
             var formData = $(this).serialize();
             categoryId = $('#selCategory').val();
             state = $('#selStatus').val();
@@ -175,12 +181,20 @@
                 success: function(res) {
                     var result = res.data;
                     var data = result.data;
+
                     var html = template('articleTpl', {
                         data: data
                     });
                     $('#articleBox').html(html);
+
                     //清空分页设置
+                    $('#pageBox').empty();
                     $('#pageBox').removeData("twbs-pagination");
+                    if (data.length == 0) {
+                        $('#myModal').modal('show');
+                        $('.modal-body').text('没有符合条件的数据');
+                        return;
+                    }
                     //重新设置分页
                     initPage(result.pages);
                 }
@@ -236,11 +250,7 @@
                 success: function(res) {
                     var result = res.data;
                     var data = result.data;
-                    if (data.length == 0) {
-                        $('#myModal').modal('show');
 
-                        $('.modal-body').text('没有符合条件的数据');
-                    }
                     var html = template('articleTpl', {
                         data: data
                     });
