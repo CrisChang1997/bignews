@@ -30,11 +30,11 @@
         <a href="javascript:;" class="level_one"><i class="fa fa-list-ul"></i>全部分类</a>
         <ul class="level_two" id="levelBox">
           <li class="up"></li>
-       
+
         </ul>
       </div>
       <ul class="left_menu fl" id="leftBox">
-        
+
       </ul>
       <ul class="right_menu fr">
         <li><a href="#">科技专题</a></li>
@@ -123,31 +123,29 @@
   <script src="./article.js"></script>
   <!-- 文章页面的 js 代码  -->
   <script type="text/html" id="articleTpl">
-     <div class="breadcrumb">
-        当前位置： <a href="#">首页</a> &gt; <a href="#">{{category}}</a> &gt; 文章详情
-      </div>
-      <h3 class="article_title">{{title}}</h3>
-      <div class="article_info">{{author}} 发布于 {{date}} 07:08:46&nbsp;&nbsp;&nbsp;分类: {{category}}&nbsp;&nbsp;&nbsp;阅读:
-        ({{read}})&nbsp;&nbsp;&nbsp;评论: ({{comments}})</div>
-      <div class="article_con">
-      </div>
-      <div class="article_links">
-        上一篇： <a href="article.html?id={{prev.id}}">{{prev.title}}</a><br>
-        下一篇： <a href="#">世界第一个可以玩游戏的马桶、世界上第一个可以玩游戏的茶杯</a>
-      </div>
-  </script>
-  <script type="text/html" id="commentTpl">
-    {{each data}}
-    <div class="comment_list_con">
-      <div class="comment_detail_list">
-        <div class="person_pic fl">乔</div>
-        <div class="name_time fl"><b>{{$value.author}}</b><span>{{$value.date}}</span></div>
-        <div class="comment_text fl">
-         {{$value.content}}
+        <div class="breadcrumb">
+            当前位置： <a href="index.html">首页</a> &gt; <a href="list.html?id={{categoryId}}">{{category}}</a> &gt; 文章详情
         </div>
-      </div>
-      {{/each}}
-  </script>
+        <h3 class="article_title">{{title}}</h3>
+        <div class="article_info">{{author}} 发布于 {{date}} 07:08:46&nbsp;&nbsp;&nbsp;分类: {{category}}&nbsp;&nbsp;&nbsp;阅读: ({{read}})&nbsp;&nbsp;&nbsp;评论: ({{comments}})</div>
+        <div class="article_con">
+        </div>
+        <div class="article_links">
+            上一篇： <a href="article.html?id={{prev.id}}">{{prev.title}}</a><br> 下一篇： <a href="article.html?id={{prev.id}}">世界第一个可以玩游戏的马桶、世界上第一个可以玩游戏的茶杯</a>
+        </div>
+    </script>
+  <script type="text/html" id="commentTpl">
+        {{each data}}
+        <div class="comment_list_con">
+            <div class="comment_detail_list">
+                <div class="person_pic fl">{{$value.author.charAt(0)}}</div>
+                <div class="name_time fl"><b>{{$value.author}}</b><span>{{$value.date}}</span></div>
+                <div class="comment_text fl">
+                    {{$value.content}}
+                </div>
+            </div>
+            {{/each}}
+    </script>
 
   <script>
     // 获取文章的ID
