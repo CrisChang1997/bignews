@@ -2,163 +2,165 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>大事件-首页</title>
-  <link rel="stylesheet" href="css/reset.css">
-  <link rel="stylesheet" href="css/font-awesome.min.css">
-  <link rel="stylesheet" href="css/main.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>大事件-首页</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/main.css">
 </head>
 
 <body>
-  <div class="header">
-    <a href="#" class="logo fl"><img src="images/logo.png" alt="logo"></a>
-    <div class="search_form fl">
-      <input type="text" class="search_txt" placeholder="黑洞照片">
-      <button class="search_btn"><i class="fa fa-search"></i></button>
+    <div class="header">
+        <a href="javascript:;" class="logo fl"><img src="images/logo.png" alt="logo"></a>
+        <div class="search_form fl">
+            <input type="text" class="search_txt" placeholder="黑洞照片">
+            <button class="search_btn"><i class="fa fa-search"></i></button>
+        </div>
+        <div class="link_info fr">
+            <a href="#"><i class="fa fa-angle-right"></i>&nbsp;&nbsp;网站地图</a><br>
+            <a href="#"><i class="fa fa-angle-right"></i>&nbsp;&nbsp;招聘信息</a>
+        </div>
     </div>
-    <div class="link_info fr">
-      <a href="#"><i class="fa fa-angle-right"></i>&nbsp;&nbsp;网站地图</a><br>
-      <a href="#"><i class="fa fa-angle-right"></i>&nbsp;&nbsp;招聘信息</a>
+
+    <div class="menu_con">
+        <div class="menu">
+            <div class="menu_collapse fl">
+                <a href="index.html" class="level_one"><i class="fa fa-list-ul"></i>全部分类</a>
+                <ul class="level_two" id="levelBox">
+                    <li class="up"></li>
+
+                </ul>
+            </div>
+            <ul class="left_menu fl" id="leftBox">
+
+            </ul>
+            <ul class="right_menu fr">
+                <li><a href="#">科技专题</a></li>
+                <li><a href="#">财经专题</a></li>
+            </ul>
+        </div>
     </div>
-  </div>
 
-  <div class="menu_con">
-    <div class="menu">
-      <div class="menu_collapse fl">
-        <a href="javascript:;" class="level_one"><i class="fa fa-list-ul"></i>全部分类</a>
-        <ul class="level_two" id="levelBox">
-          <li class="up"></li>
-       
-        </ul>
-      </div>
-      <ul class="left_menu fl" id="leftBox">
-        
-      </ul>
-      <ul class="right_menu fr">
-        <li><a href="#">科技专题</a></li>
-        <li><a href="#">财经专题</a></li>
-      </ul>
-    </div>
-  </div>
-
-  <div class="main_con clearfix">
-    <div class="left_con">
-      <ul class="focus_list" id="focusBox">
+    <div class="main_con clearfix">
+        <div class="left_con">
+            <ul class="focus_list" id="focusBox">
 
 
-      </ul>
+            </ul>
 
-      <div class="common_title">
-        <h3><i class="fa fa-edit"></i> 最新资讯</h3>
-        <a href="#" class="more"><i class="fa fa-angle-double-right"></i></a>
-      </div>
+            <div class="common_title">
+                <h3><i class="fa fa-edit"></i> 最新资讯</h3>
+                <a href="#" class="more"><i class="fa fa-angle-double-right"></i></a>
+            </div>
 
-      <div id="postsBox">
+            <div id="postsBox">
 
-      </div>
+            </div>
 
-    </div>
-    <div class="right_con">
-      <div class="common_wrap">
-        <h3><i class="fa fa-bar-chart"></i> 一周热门排行</h3>
-        <ul class="content_list hotList" id="rankBox">
-          <!-- <li><span class="first">1</span><a href="#">神奇的水滴摄影，泡泡中的世界泡泡中的世界</a></li>
+        </div>
+        <div class="right_con">
+            <div class="common_wrap">
+                <h3><i class="fa fa-bar-chart"></i> 一周热门排行</h3>
+                <ul class="content_list hotList" id="rankBox">
+                    <!-- <li><span class="first">1</span><a href="#">神奇的水滴摄影，泡泡中的世界泡泡中的世界</a></li>
           <li><span class="second">2</span><a href="#">神奇的水滴摄影，泡泡中的世界</a></li>
           <li><span class="third">3</span><a href="#">神奇的水滴摄影，泡泡中的世界</a></li>
           <li><span>4</span><a href="#">神奇的水滴摄影，泡泡中的世界</a></li>
           <li><span>5</span><a href="#">神奇的水滴摄影，泡泡中的世界</a></li>
           <li><span>6</span><a href="#">神奇的水滴摄影，泡泡中的世界</a></li> -->
 
-        </ul>
-      </div>
-      <div class="common_wrap">
-        <h3><i class="fa fa-commenting-o"></i> 最新评论</h3>
-        <ul class="content_list comment_list" id="lastComment">
-          <input type="hideen" name="" id="timer">
+                </ul>
+            </div>
+            <div class="common_wrap">
+                <h3><i class="fa fa-commenting-o"></i> 最新评论</h3>
+                <ul class="content_list comment_list" id="lastComment">
+                    <input type="hideen" name="" id="timer">
 
-        </ul>
-      </div>
-      <div class="common_wrap">
-        <h3><i class="fa fa-bullseye"></i> 焦点关注</h3>
-        <ul class="content_list guanzhu_list" id="recommendBox">
+                </ul>
+            </div>
+            <div class="common_wrap">
+                <h3><i class="fa fa-bullseye"></i> 焦点关注</h3>
+                <ul class="content_list guanzhu_list" id="recommendBox">
 
-        </ul>
-      </div>
+                </ul>
+            </div>
+        </div>
     </div>
-  </div>
 
-  <div class="footer clearfix">
-    <div class="foot_link">
-      <a href="#">关于我们</a>
-      <span>|</span>
-      <a href="#">联系我们</a>
-      <span>|</span>
-      <a href="#">招聘人才</a>
-      <span>|</span>
-      <a href="#">友情链接</a>
+    <div class="footer clearfix">
+        <div class="foot_link">
+            <a href="#">关于我们</a>
+            <span>|</span>
+            <a href="#">联系我们</a>
+            <span>|</span>
+            <a href="#">招聘人才</a>
+            <span>|</span>
+            <a href="#">友情链接</a>
+        </div>
+        <p>CopyRight © 2019 深圳大事件信息技术股份有限公司 All Rights Reserved</p>
+        <p>电话：0755-****888 粤ICP备*******8号</p>
     </div>
-    <p>CopyRight © 2019 深圳大事件信息技术股份有限公司 All Rights Reserved</p>
-    <p>电话：0755-****888 粤ICP备*******8号</p>
-  </div>
 
-  <script src="./js/jquery-1.12.4.min.js"></script>
-  <script src="./js/template-web.js"></script>
-  <script src="public.js"></script>
-  <script type="text/html" id="postsTpl">
-    {{each response}}
-    <div class="common_news_list">
-      <a href="article.html?id={{$value.id}}" class="list_pic"><img src="{{$value.cover}}" alt=""></a>
-      <h4><a href="article.html?id={{$value.id}}">{{$value.title}}</a></h4>
-      <p class="posts_p"> {{$value.content.replace(/<[^>]+>/g,'')}}</p> 
-      <div class="new_info">
-        <span>标签：{{$value.category}}&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<i class="fa fa-eye"></i>&nbsp;阅读( 
-         {{$value.read}} )&nbsp;&nbsp;&nbsp;<i class="fa fa-commenting"></i>&nbsp;评论( {{$value.comments}} )</span>
-        <b>发布于 {{$value.date}} 12:18:58</b>
-      </div>
-    </div>
-    {{/each}}
-  </script>
-  <script>
-    $.ajax({
-      type: 'get',
-      url: 'http://localhost:8080/api/v1/index/latest',
-      success: function (response) {
-        var html = template('postsTpl', { response: response.data });
-        $('#postsBox').html(html);
-      }
-    })
-  </script>
-  <!-- index 代码 -->
-  <script type="text/html" id="focusTpl">
-   {{each response}}
-    {{if $index==0}}
-   <li class="first">
-    <a href="article.html?id={{$value.id}}"><img src="{{$value.cover}}" alt=""></a>
-    <p>{{$value.title}}</p>
-  </li>
-    {{else}}
-    <li>
-      <a href="article.html?id={{$value.id}}"><img src="{{$value.cover}}" alt=""></a>
-      <p>{{$value.title}}</p>
-    </li>
-    {{/if}}
-  {{/each}}
-  </script>
-  <!-- 热点图 -->
-<script>
-$.ajax({
-    type: 'get',
-    url: 'http://localhost:8080/api/v1/index/hotpic',
-    success: function (response) {
-        var html = template('focusTpl', { response: response.data });
-        $('#focusBox').html(html);
-    }
-})
-</script>
-  <script src="recommend.js"></script>
-  <script src="./sqy-index.js"></script>
+    <script src="./js/jquery-1.12.4.min.js"></script>
+    <script src="./js/template-web.js"></script>
+    <script src="public.js"></script>
+    <script type="text/html" id="postsTpl">
+        {{each response}}
+        <div class="common_news_list">
+            <a href="article.html?id={{$value.id}}" class="list_pic"><img src="{{$value.cover}}" alt=""></a>
+            <h4><a href="article.html?id={{$value.id}}">{{$value.title}}</a></h4>
+            <p class="posts_p"> {{$value.content.replace(/<[^>]+>/g,'')}}</p>
+            <div class="new_info">
+                <span>标签：{{$value.category}}&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<i class="fa fa-eye"></i>&nbsp;阅读(
+          {{$value.read}} )&nbsp;&nbsp;&nbsp;<i class="fa fa-commenting"></i>&nbsp;评论( {{$value.comments}} )</span>
+                <b>发布于 {{$value.date}} 12:18:58</b>
+            </div>
+        </div>
+        {{/each}}
+    </script>
+    <script>
+        $.ajax({
+            type: 'get',
+            url: 'http://localhost:8080/api/v1/index/latest',
+            success: function(response) {
+                var html = template('postsTpl', {
+                    response: response.data
+                });
+                $('#postsBox').html(html);
+            }
+        })
+    </script>
+    <!-- index 代码 -->
+    <script type="text/html" id="focusTpl">
+        {{each response}} {{if $index==0}}
+        <li class="first">
+            <a href="article.html?id={{$value.id}}"><img src="{{$value.cover}}" alt=""></a>
+            <p>{{$value.title}}</p>
+        </li>
+        {{else}}
+        <li>
+            <a href="article.html?id={{$value.id}}"><img src="{{$value.cover}}" alt=""></a>
+            <p>{{$value.title}}</p>
+        </li>
+        {{/if}} {{/each}}
+    </script>
+    <!-- 热点图 -->
+    <script>
+        $.ajax({
+            type: 'get',
+            url: 'http://localhost:8080/api/v1/index/hotpic',
+            success: function(response) {
+                var html = template('focusTpl', {
+                    response: response.data
+                });
+                $('#focusBox').html(html);
+            }
+        })
+    </script>
+    <script src="recommend.js"></script>
+    <script src="./sqy-index.js"></script>
 </body>
 
 </html>
