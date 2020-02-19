@@ -110,7 +110,10 @@
         contentType:false,
         success:function(res){
           // console.log(res);
-          location.reload();
+          parent.location.reload();
+        },
+        error:function(){
+          alert('请完善文章信息！')
         }
       });
     } 
