@@ -45,3 +45,26 @@ $.ajax({
     }
 })
 
+// 文章类型
+var categoryId=getUrlParams('categoryId')
+$.ajax({
+    type: 'get',
+    url: 'http://localhost:8080/api/v1/index/category',
+    success: function (response) {
+        console.log(response);
+        var categoryTpl = `
+        {{each data}}
+        <li class="lei"><a href="search.html?categoryId={{$value.categoryId}}"  class="cate" data-id="{{$value.categoryId}}">{{$value.name}}</a></li>
+        {{/each}}
+        `
+        var html = template.render(categoryTpl, { data: response.data });
+        $('#levelBox').html(html);
+        $('#leftBox').html(html);
+    }
+})
+
+// 根据不同的类别跳转不同的类别界面
+$('.lei').on('click','.cate', function () {
+    // alert('okk')
+    console.log('okk')
+})
