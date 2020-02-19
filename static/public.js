@@ -1,17 +1,13 @@
 // 文章搜索功能
-// alert('okk')
 $('.search_form').on('click', '.search_btn', function () {
     var keys = $('.search_form').find('.search_txt').val();
-    // console.log(keys)
     if (keys.trim().length != 0) {
         location.href = '/search.html?key=' + keys;
     }
 })
 
-// console.log(fn('key'))
 function getUrlParams(name) {
-    var params = location.search.substr(1).split('$');
-    console.log(params);
+    var params = location.search.substr(1).split('&');
     for (var i = 0; i < params.length; i++) {
         if (params[i].split('=')[0] == name) {
             return params[i].split('=')[1];
@@ -25,7 +21,6 @@ $.ajax({
     type: 'get',
     url: 'http://localhost:8080/api/v1/index/rank',
     success: function (response) {
-        console.log(response);
         var rankTpl = `
         {{each response}}
         {{if $index==0}}
@@ -40,31 +35,23 @@ $.ajax({
         {{/each}}
         `
         var html = template.render(rankTpl, { response: response.data });
-        // console.log(html);
         $('#rankBox').html(html)
     }
 })
 
 // 文章类型
-var categoryId=getUrlParams('categoryId')
 $.ajax({
     type: 'get',
     url: 'http://localhost:8080/api/v1/index/category',
     success: function (response) {
-        console.log(response);
         var categoryTpl = `
         {{each data}}
-        <li class="lei"><a href="search.html?categoryId={{$value.categoryId}}"  class="cate" data-id="{{$value.categoryId}}">{{$value.name}}</a></li>
+        <li class="lei"><a href="list.html?id={{$value.id}}&name={{$value.name}}"  class="cate" data-id="{{$value.id}}">{{$value.name}}</a></li>
         {{/each}}
         `
         var html = template.render(categoryTpl, { data: response.data });
         $('#levelBox').html(html);
         $('#leftBox').html(html);
-    }
-})
 
-// 根据不同的类别跳转不同的类别界面
-$('.lei').on('click','.cate', function () {
-    // alert('okk')
-    console.log('okk')
+    }
 })

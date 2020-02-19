@@ -51,8 +51,9 @@
   <div class="main_con clearfix">
     <div class="left_con setfr">
       <div class="list_title">
-        <h3>爱生活</h3>
+        <h3></h3>
       </div>
+
       <div id="postsBox">
 
       </div>
@@ -85,14 +86,8 @@
       </div>
       <div class="common_wrap">
         <h3><i class="fa fa-bullseye"></i> 焦点关注</h3>
-        <ul class="content_list guanzhu_list">
-          <li><a href="#">神奇的水滴摄影，泡泡中的世界泡泡中的世界</a></li>
-          <li><a href="#">神奇的水滴摄影，泡泡中的世界</a></li>
-          <li><a href="#">神奇的水滴摄影，泡泡中的世界</a></li>
-          <li><a href="#">神奇的水滴摄影，泡泡中的世界</a></li>
-          <li><a href="#">神奇的水滴摄影，泡泡中的世界</a></li>
-          <li><a href="#">神奇的水滴摄影，泡泡中的世界</a></li>
-          <li><a href="#">神奇的水滴摄影，泡泡中的世界</a></li>
+        <ul class="content_list guanzhu_list" id="recommendBox">
+
         </ul>
       </div>
     </div>
@@ -113,35 +108,38 @@
   </div>
   <script src="./js/template-web.js"></script>
   <script src="public.js"></script>
+  <script src="recommend.js"></script>
   <script src="./admin/js/jquery.twbsPagination.js"></script>
   <script type="text/html" id="postsTpl">
     {{each response}}
     <div class="common_news_list">
       <a href="article.html?id={{$value.id}}" class="list_pic"><img src="{{$value.cover}}" alt=""></a>
       <h4><a href="article.html?id={{$value.id}}">{{$value.title}}</a></h4>
-      <p>{{$value.content}}</p>
+      <p>{{$value.content.replace(/<[^>]+>/g,'')}}</p>
       <div class="new_info">
+        {{if type==categoryId}}
         <span>标签：{{$value.category}}&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<i class="fa fa-eye"></i>&nbsp;阅读( 
          {{$value.read}} )&nbsp;&nbsp;&nbsp;<i class="fa fa-commenting"></i>&nbsp;评论( {{$value.comments}} )</span>
+         {{/if}}
         <b>发布于 {{$value.date}} 12:18:58</b>
       </div>
     </div>
     {{/each}}
   </script>
   <script>
+    var id = getUrlParams('id');
+    var name = decodeURI(getUrlParams('name')) == -1 ? '' : decodeURI(getUrlParams('name'));
+    $('.list_title h3').text(name);
     $.ajax({
       type: 'get',
       url: 'http://localhost:8080/api/v1/index/search',
-      // data: {
-      //     key:keys
-      // },
+      data: {
+        type: id
+      },
       success: function (response) {
         console.log(response);
         console.log(response.data);
-
-        // location.href = '/list.html?key=' + keys;
         var html = template('postsTpl', { response: response.data.data });
-        // console.log(html);
         $('#postsBox').html(html);
         $('#pageBox').twbsPagination({
           totalPages: response.data.pages,
@@ -151,31 +149,28 @@
           prev: '上一页',
           next: '下一页',
           onPageClick: function (event, page) {
-            // console.log(1);
-
             changePage(page);
           }
         });
-        function changePage(page) {
-          $.ajax({
-            type: 'get',
-            url: 'http://localhost:8080/api/v1/index/search',
-            data: {
-              page: page
-            },
-            success: function (response) {
-              // console.log(res);
-              var html = template('postsTpl', { response: response.data.data });
-              // console.log(html);
-              $('#postsBox').html(html);
-            }
-          })
-        }
       }
     })
+
+    //分页
+    function changePage(page) {
+      $.ajax({
+        type: 'get',
+        url: 'http://localhost:8080/api/v1/index/search',
+        data: {
+          type: id,
+          page: page
+        },
+        success: function (response) {
+          var html = template('postsTpl', { response: response.data.data });
+          $('#postsBox').html(html);
+        }
+      })
+    }
   </script>
   <script src="./sqy-index.js"></script>
-
 </body>
-
 </html>

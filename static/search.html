@@ -10,6 +10,8 @@
   <link rel="stylesheet" href="css/font-awesome.min.css">
   <link rel="stylesheet" type="text/css" href="css/jquery.pagination.css">
   <link rel="stylesheet" type="text/css" href="css/main.css">
+  <link rel="stylesheet" href="./admin/js/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="./admin/css/iconfont.css">
   <script type="text/javascript" src="js/jquery-1.12.4.min.js"></script>
   <script type="text/javascript" src="js/jquery.pagination.min.js"></script>
 </head>
@@ -33,11 +35,11 @@
         <a href="javascript:;" class="level_one"><i class="fa fa-list-ul"></i>全部分类</a>
         <ul class="level_two" id="levelBox">
           <li class="up"></li>
-       
+
         </ul>
       </div>
       <ul class="left_menu fl" id="leftBox">
-        
+
       </ul>
       <ul class="right_menu fr">
         <li><a href="#">科技专题</a></li>
@@ -49,31 +51,19 @@
   <div class="main_con clearfix">
     <div class="left_con setfr">
       <div class="list_title">
-        <h3>爱生活</h3>
+        <h3>搜索结果</h3>
       </div>
-
-     <div id="postsBox">
-
-     </div>
 
       <div id="postsBox">
 
       </div>
 
 
-      <div id="pagination" class="page"></div>
-      <script>
-        $(function () {
-          $("#pagination").pagination({
-            currentPage: 2,
-            totalPage: 8,
-            callback: function (current) {
-              alert('ok!');
-            }
-          });
-        });
-      </script>
+      <div class="row text-center">
+        <ul class="pagination pagination-sm" id="pageBox">
 
+        </ul>
+      </div>
     </div>
     <div class="right_con setfl">
       <div class="common_wrap">
@@ -96,14 +86,8 @@
       </div>
       <div class="common_wrap">
         <h3><i class="fa fa-bullseye"></i> 焦点关注</h3>
-        <ul class="content_list guanzhu_list">
-          <li><a href="#">神奇的水滴摄影，泡泡中的世界泡泡中的世界</a></li>
-          <li><a href="#">神奇的水滴摄影，泡泡中的世界</a></li>
-          <li><a href="#">神奇的水滴摄影，泡泡中的世界</a></li>
-          <li><a href="#">神奇的水滴摄影，泡泡中的世界</a></li>
-          <li><a href="#">神奇的水滴摄影，泡泡中的世界</a></li>
-          <li><a href="#">神奇的水滴摄影，泡泡中的世界</a></li>
-          <li><a href="#">神奇的水滴摄影，泡泡中的世界</a></li>
+        <ul class="content_list guanzhu_list" id="recommendBox">
+
         </ul>
       </div>
     </div>
@@ -123,7 +107,9 @@
     <p>电话：0755-****888 粤ICP备*******8号</p>
   </div>
   <script src="./js/template-web.js"></script>
+  <script src="./admin/js/jquery.twbsPagination.js"></script>
   <script src="public.js"></script>
+  <script src="recommend.js"></script>
   <script src="search.js"></script>
   <script type="text/html" id="postsTpl">
     {{each response}}
