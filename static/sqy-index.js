@@ -3,7 +3,6 @@ $.ajax({
     type: 'get',
     url: 'http://localhost:8080/api/v1/index/latest_comment',
     success: function (re) {
-        console.log(re);
         var lastCommentTpl = `
         {{each data}}
         <li>

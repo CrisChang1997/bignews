@@ -124,15 +124,8 @@
     $.ajax({
       type: 'get',
       url: 'http://localhost:8080/api/v1/index/latest',
-      // data: {
-      //     key:keys
-      // },
       success: function (response) {
-        console.log(response);
-        console.log(response.data);
-        // location.href = '/list.html?key=' + keys;
         var html = template('postsTpl', { response: response.data });
-        // console.log(html);
         $('#postsBox').html(html);
       }
     })
@@ -159,7 +152,6 @@ $.ajax({
     type: 'get',
     url: 'http://localhost:8080/api/v1/index/hotpic',
     success: function (response) {
-        console.log(response);
         var html = template('focusTpl', { response: response.data });
         $('#focusBox').html(html);
     }

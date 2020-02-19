@@ -137,8 +137,6 @@
         type: id
       },
       success: function (response) {
-        console.log(response);
-        console.log(response.data);
         var html = template('postsTpl', { response: response.data.data });
         $('#postsBox').html(html);
         $('#pageBox').twbsPagination({

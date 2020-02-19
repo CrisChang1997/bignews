@@ -138,7 +138,6 @@
       type: 'get',
       url: 'http://localhost:8080/api/v1/admin/category/list',
       success: function (re) {
-        console.log(re);
         var html = template('acticleCategoryTpl', { data: re.data });
         $('#articleCategoryBox').html(html)
 
@@ -176,7 +175,6 @@
           id: id
         },
         success: function (re) {
-          console.log(re);
           var html = template('modifyTpl', { data: re.data });
           $('#addModal').html(html);
         }
@@ -190,7 +188,6 @@
       var id = $(this).attr('data-id');
       var name = $(this).parent().siblings('div:eq(1)').find('input:eq(1)').val();
       var slug = $(this).parent().siblings('div:eq(1)').find('input:eq(2)').val();
-      console.log(slug);
       //发送编辑请求
       $.ajax({
         type: 'post',

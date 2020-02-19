@@ -370,7 +370,6 @@
             type: 'get',
             url: '/api/v1/admin/data/info',
             success: function(response) {
-                console.log(response);
                 $('#totalArticle').html(response.totalArticle);
                 $('#dayArticle').html(response.dayArticle);
                 $('#totalComment').html(response.totalComment);

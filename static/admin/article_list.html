@@ -139,8 +139,6 @@
             success: function (res) {
                 var result = res.data;
                 var data = result.data;
-                console.log(res);
-
                 var html = template('articleTpl', {
                     data: data
                 });
@@ -171,8 +169,6 @@
                     page: page
                 },
                 success: function (res) {
-                    console.log(res);
-
                     var result = res.data;
                     var data = result.data;
                     var html = template('articleTpl', {
