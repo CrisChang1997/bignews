@@ -78,6 +78,7 @@
     <script src="js/tinymce/js/tinymce/tinymce.min.js"></script>
     <script src="js/tinymce/js/tinymce_setup.js"></script>
     <script src="./js/template-web.js"></script>
+    <script src="../public.js"></script>
     <script type="text/html" id="categoryTpl">
         {{each category}}
         <option value="{{$value.id}}">{{$value.name}}</option>
@@ -86,15 +87,6 @@
 
     <!-- 业务逻辑代码 -->
     <script>
-        function getUrlParams(name) {
-            var params = location.search.substr(1).split('&');
-            for (var i = 0; i < params.length; i++) {
-                if (params[i].split('=')[0] == name) {
-                    return params[i].split('=')[1];
-                }
-            }
-            return -1;
-        }
         //获取文章id及文章状态
         var id = getUrlParams('id');
         //判断是否更改文章状态
@@ -167,7 +159,7 @@
                 success: function(res) {
 
                     alert('修改成功！');
-                    location.reload();
+                    location.href = 'article_list.html';
                 },
                 error: function(res) {
                     alert('请完善文章信息！');
