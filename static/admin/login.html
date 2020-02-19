@@ -78,7 +78,8 @@
                         }
                     },
                     error: function(res) {
-                        alert('用户名或密码错误');
+                        $('#myModal').modal('show');
+                        $('.modal-body').text('用户名或密码错误!');
                     }
                 })
                 //阻止表单默认提交
