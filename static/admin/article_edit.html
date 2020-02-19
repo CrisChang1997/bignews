@@ -168,8 +168,11 @@
                 contentType: false,
                 success: function(res) {
 
-                    alert('修改成功');
+                    alert('修改成功！');
                     location.reload();
+                },
+                error: function(res) {
+                    alert('请完善文章信息！');
                 }
             })
             return false;
