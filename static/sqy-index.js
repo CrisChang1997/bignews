@@ -8,7 +8,7 @@ $.ajax({
         {{each data}}
         <li>
         <span>{{$value.author.charAt(0)}}</span>
-        <b><em>{{$value.author}}</em onunload="Time({{$value.date}})"> {{$imports.Time($value.date)}}月前(08-14)说:</b>
+        <b><em>{{$value.author}}</em onunload="Time({{$value.date}})"> {{$imports.Time($value.date)}}个月前(08-14)说:</b>
         <strong>{{$value.intro}}</strong>
       </li>
       {{/each}}
