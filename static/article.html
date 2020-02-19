@@ -120,7 +120,10 @@
         <div class="article_con">
         </div>
         <div class="article_links">
-            上一篇： <a href="article.html?id={{prev.id}}">{{prev.title}}</a><br> 下一篇： <a href="article.html?id={{next.id}}">{{next.title}}</a>
+            上一篇： {{if prev}}
+            <a href="article.html?id={{prev.id}}">{{prev.title}}</a> {{else}} 没有了！ {{/if}}
+            <br> 下一篇： {{if next}}
+            <a href="article.html?id={{next.id}}">{{next.title}}</a> {{else}} 没有了！{{/if}}
         </div>
     </script>
     <script type="text/html" id="commentTpl">
