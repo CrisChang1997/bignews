@@ -38,7 +38,7 @@
                     <div class="col-sm-4">
                         <select class="form-control" name="categoryId" id="article_category">
 
-            </select>
+                        </select>
                     </div>
                 </div>
                 <div class="form-group">
@@ -48,10 +48,10 @@
                         <div class="input-group">
                             <input type="text" name="date" class="form-control" placeholder="YYYY-MM-DD" id="dateinput">
                             <span class="input-group-btn">
-                <button class="btn btn-default" type="button"
-                  onclick="jeDate('#dateinput',{trigger:false,format: 'YYYY-MM-DD'})"><i
-                    class="iconfont icon-icondate"></i></button>
-              </span>
+                                <button class="btn btn-default" type="button"
+                                    onclick="jeDate('#dateinput',{trigger:false,format: 'YYYY-MM-DD'})"><i
+                                        class="iconfont icon-icondate"></i></button>
+                            </span>
                         </div>
                     </div>
                 </div>
@@ -114,8 +114,6 @@
 
         //提交表单
         $('#addForm').on('submit', function() {
-
-
             var text = tinymce.activeEditor.getContent();
             var formData = new FormData(this);
             if (flag == 1) {
@@ -124,21 +122,20 @@
                 formData.append('state', '草稿');
             }
             formData.append('content', text);
-            if (formData.get('cover').name) {
-                $.ajax({
-                    type: 'post',
-                    url: 'http://localhost:8080/api/v1/admin/article/publish',
-                    data: formData,
-                    processData: false,
-                    contentType: false,
-                    success: function(res) {
-                        alert('提交成功');
-                        location.href = 'article_list.html';
-                    }
-                })
-            } else {
-                alert('请上传图片');
-            }
+            $.ajax({
+                type: 'post',
+                url: 'http://localhost:8080/api/v1/admin/article/publish',
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function(res) {
+                    alert('提交成功！');
+                    location.href = 'article_list.html';
+                },
+                error: function(res) {
+                    alert('请完善文章信息！');
+                }
+            })
 
 
             return false;
