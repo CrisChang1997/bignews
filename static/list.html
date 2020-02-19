@@ -84,37 +84,8 @@
       </div>
       <div class="common_wrap">
         <h3><i class="fa fa-commenting-o"></i> 最新评论</h3>
-        <ul class="content_list comment_list">
-          <li>
-            <span>山</span>
-            <b><em>山治</em> 9个月前(08-14)说:</b>
-            <strong>挺会玩的</strong>
-          </li>
-          <li>
-            <span>丽</span>
-            <b><em>丽丽</em> 9个月前(08-14)说:9个月前(08-14)说:9个月前(08-14)说:</b>
-            <strong>挺会玩的挺会玩的挺会玩的挺会玩的</strong>
-          </li>
-          <li>
-            <span>R</span>
-            <b><em>Rechael</em> 9个月前(08-14)说:</b>
-            <strong>挺会玩的</strong>
-          </li>
-          <li>
-            <span>J</span>
-            <b><em>John</em> 9个月前(08-14)说:</b>
-            <strong>挺会玩的</strong>
-          </li>
-          <li>
-            <span>段</span>
-            <b><em>段正淳</em> 9个月前(08-14)说:</b>
-            <strong>挺会玩的</strong>
-          </li>
-          <li>
-            <span>乔</span>
-            <b><em>乔峰</em> 9个月前(08-14)说:</b>
-            <strong>挺会玩的</strong>
-          </li>
+        <ul class="content_list comment_list" id="lastComment">
+
         </ul>
       </div>
       <div class="common_wrap">
@@ -147,6 +118,10 @@
   </div>
   <script src="./js/template-web.js"></script>
   <script src="public.js"></script>
+<<<<<<< HEAD
+=======
+
+>>>>>>> 1a6a7c26c9339c47f1a75a7d13d7e85b02d9a2e0
   <script type="text/html" id="postsTpl">
     {{each response}}
     <div class="common_news_list">
@@ -163,12 +138,12 @@
   </script>
   <script>
     $.ajax({
-    type: 'get',
-    url: 'http://localhost:8080/api/v1/index/search',
-    // data: {
-    //     key:keys
-    // },
-    success: function (response) {
+      type: 'get',
+      url: 'http://localhost:8080/api/v1/index/search',
+      // data: {
+      //     key:keys
+      // },
+      success: function (response) {
         console.log(response);
         console.log(response.data);
 
@@ -176,9 +151,11 @@
         var html = template('postsTpl', { response: response.data.data });
         // console.log(html);
         $('#postsBox').html(html);
-    }
-})
+      }
+    })
   </script>
+  <script src="./sqy-index.js"></script>
+
 </body>
 
 </html>
