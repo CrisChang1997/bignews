@@ -1,5 +1,5 @@
 // 文章搜索功能
-$('.search_form').on('click', '.search_btn', function () {
+$('.search_form').on('click', '.search_btn', function() {
     var keys = $('.search_form').find('.search_txt').val();
     if (keys.trim().length != 0) {
         location.href = '/search.html?key=' + keys;
@@ -20,7 +20,7 @@ function getUrlParams(name) {
 $.ajax({
     type: 'get',
     url: 'http://localhost:8080/api/v1/index/rank',
-    success: function (response) {
+    success: function(response) {
         var rankTpl = `
         {{each response}}
         {{if $index==0}}
@@ -43,7 +43,7 @@ $.ajax({
 $.ajax({
     type: 'get',
     url: 'http://localhost:8080/api/v1/index/category',
-    success: function (response) {
+    success: function(response) {
         var categoryTpl = `
         {{each data}}
         <li class="lei"><a href="list.html?id={{$value.id}}&name={{$value.name}}"  class="cate" data-id="{{$value.id}}">{{$value.name}}</a></li>
@@ -55,3 +55,19 @@ $.ajax({
 
     }
 })
+
+//处理评论时间
+function Time(timestamp) {
+    timestamp = new Date(timestamp);
+    timestamp = timestamp.getTime();
+
+    var mistiming = Math.round((Date.now() - timestamp) / 1000);
+    var arrr = ['年', '个月', '星期', '天', '小时', '分钟', '秒'];
+    var arrn = [31536000, 2592000, 604800, 86400, 3600, 60, 1];
+    for (var i = 0; i < arrn.length; i++) {
+        var inm = Math.floor(mistiming / arrn[i]);
+        if (inm != 0) {
+            return inm + arrr[i] + '前';
+        }
+    }
+}

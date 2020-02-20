@@ -131,7 +131,8 @@
         <div class="comment_list_con">
             <div class="comment_detail_list">
                 <div class="person_pic fl">{{$value.author.charAt(0)}}</div>
-                <div class="name_time fl"><b>{{$value.author}}</b><span>{{$value.date}}</span></div>
+                <div class="name_time fl">
+                    <b>{{$value.author}}</b><span>{{$imports.Time($value.date+' '+$value.time)}}</span></div>
                 <div class="comment_text fl">
                     {{$value.content}}
                 </div>
